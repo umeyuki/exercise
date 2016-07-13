@@ -34,7 +34,7 @@ RSpec.describe Calculator do
     end
 
     context '入力が1から1000の間の数字だった場合' do
-      let(:input) { Calculator::THOUSAND_FROM_ONE.sample }
+      let(:input) { Calculator::THOUSAND_FROM_ONE.sample.to_s }
 
       it '入力された数字が@shuffle_numbersから除外される' do
         subject
@@ -45,11 +45,11 @@ RSpec.describe Calculator do
 
   describe '#extract_removed_number' do
     let(:expected_number) { Calculator::THOUSAND_FROM_ONE.sample }
-    let(:input) { expected_number }
+    let(:input) { expected_number.to_s }
 
     before { calculator.remove_number(input) }
 
-    it '除外された文字列が結果として返ってくる' do
+    it '除外された数値が結果として返ってくる' do
       subject
       expect(calculator.extract_removed_number).to eq expected_number
     end
