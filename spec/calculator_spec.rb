@@ -36,9 +36,9 @@ RSpec.describe Calculator do
     context '入力が1から1000の間の数字だった場合' do
       let(:input) { Calculator::THOUSAND_FROM_ONE.sample.to_s }
 
-      it '入力された数字が@shuffle_numbersから除外される' do
+      it '入力された数字が@dup_numbersから除外される' do
         subject
-        expect(calculator.shuffle_numbers).not_to include input
+        expect(calculator.dup_numbers).not_to include input
       end
     end
   end
