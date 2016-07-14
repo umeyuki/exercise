@@ -4,7 +4,7 @@ require_relative "lib/calculator"
 try_count = 10000
 
 Benchmark.bm 10 do |r|
-  r.report "#with_with" do
+  r.report "#with_each" do
     try_count.times do
       calculator = Calculator.new
       calculator.remove_number([*1..Calculator::MAX_NUMBER].sample)
