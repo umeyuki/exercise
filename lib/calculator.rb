@@ -10,7 +10,7 @@ class Calculator
   end
 
   def remove_number(num)
-    if num.nil? || num == '' || !num.between?(1, MAX_NUMBER)
+    if !num.is_a?(Fixnum) || !num.between?(1, MAX_NUMBER)
       fail(InputValueOutOfRangeError, '1から1000の間で数字を入力してください')
     end
     dup_numbers.delete(num.to_i)
