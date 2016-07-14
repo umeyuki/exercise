@@ -1,5 +1,5 @@
 class Calculator
-  MAX_NUMBER = 10000
+  MAX_NUMBER = 1000
   THOUSAND_FROM_ONE = [*1..1000].shuffle
 
   attr_accessor :dup_numbers, :total
@@ -10,7 +10,9 @@ class Calculator
   end
 
   def remove_number(num)
-    fail(InputValueOutOfRangeError, '1から1000の間で数字を入力してください') unless num.between?(1, MAX_NUMBER)
+    if num.nil? || num == '' || !num.between?(1, MAX_NUMBER)
+      fail(InputValueOutOfRangeError, '1から1000の間で数字を入力してください')
+    end
     dup_numbers.delete(num.to_i)
   end
 
@@ -24,6 +26,6 @@ class Calculator
     total - dup_numbers.inject(:+)
   end
 
-  alias :extract_number, :extract_removed_number_with_inject
+  alias_method :extract_removed_number, :extract_removed_number_with_inject
   class InputValueOutOfRangeError < StandardError; end
 end
