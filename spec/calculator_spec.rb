@@ -24,17 +24,17 @@ RSpec.describe Calculator do
     end
 
     context '入力に数字以外のものが含まれている場合' do
-      let(:input) { '-999' }
+      let(:input) { -999 }
       include_examples '例外が発生する'
     end
 
     context '入力が1000を超える場合' do
-      let(:input) { '1001' }
+      let(:input) { 1001 }
       include_examples '例外が発生する'
     end
 
     context '入力が1から1000の間の数字だった場合' do
-      let(:input) { Calculator::THOUSAND_FROM_ONE.sample.to_s }
+      let(:input) { Calculator::THOUSAND_FROM_ONE.sample }
 
       it '入力された数字が@dup_numbersから除外される' do
         subject
@@ -45,7 +45,7 @@ RSpec.describe Calculator do
 
   describe '#extract_removed_number' do
     let(:expected_number) { Calculator::THOUSAND_FROM_ONE.sample }
-    let(:input) { expected_number.to_s }
+    let(:input) { expected_number }
 
     before { calculator.remove_number(input) }
 
