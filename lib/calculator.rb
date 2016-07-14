@@ -1,5 +1,5 @@
 class Calculator
-  MAX_NUMBER = 1000
+  MAX_NUMBER = 10000
   THOUSAND_FROM_ONE = [*1..1000].shuffle
 
   attr_accessor :dup_numbers, :total
@@ -24,5 +24,6 @@ class Calculator
     total - dup_numbers.inject(:+)
   end
 
+  alias :extract_number, :extract_removed_number_with_inject
   class InputValueOutOfRangeError < StandardError; end
 end
