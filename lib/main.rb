@@ -2,7 +2,7 @@ require 'readline'
 require_relative './calculator'
 
 begin
-  input = Readline.readline("1から1000の間で任意の数字を入力してください\n> ")
+  input = Readline.readline("1から1000の間で任意の数字を入力してください\n> ").to_i
   calculator = Calculator.new
   calculator.remove_number(input)
   result = calculator.extract_removed_number
